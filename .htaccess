@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{HTTP_HOST} !^www. [NC]
+RewriteCond %{HTTP_HOST} ^(.+)$ [NC]
+RewriteRule ^(.*)$ http://www\.%1/$1 [R=301,L]
+
+RewriteRule  ^taxon/([0-9]*)/([A-Za-z\w\-]*)/?.*$ index.php?taxon_id=$1&taxon_name=$2&page=taxon [L,QSA]
+RewriteRule ^([A-Za-z\-0-9]+) index.php?page=$1 [QSA,L]
